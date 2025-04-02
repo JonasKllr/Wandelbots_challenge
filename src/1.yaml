@@ -1,0 +1,59 @@
+# Design a simple RESTful API endpoint for starting a robotic arm at a specific position.
+# Provide the OpenAPI specification for this endpoint.
+
+openapi: 3.0.4
+info:
+  title: Robotic Arm API
+  description: API to start a robotic arm at a specific position
+  version: 1.0.0
+
+paths:
+  /robotic-arm/start:
+    post:
+      summary: Start the robotic arm at a specific position
+      description: Initiates the robotic arm's movement to the given position.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - x
+                - y
+                - z
+              properties:
+                x:
+                  type: number
+                  format: float
+                  description: X-coordinate of the position
+                y:
+                  type: number
+                  format: float
+                  description: Y-coordinate of the position
+                z:
+                  type: number
+                  format: float
+                  description: Z-coordinate of the position
+                angle:
+                  type: number
+                  format: float
+                  description: Rotation angle of the robotic arm (optional)
+      responses:
+        "200":
+          description: Robotic arm started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  status:
+                    type: string
+        "400":
+          description: Invalid request payload
+        "500":
+          description: Internal server error
+
+
