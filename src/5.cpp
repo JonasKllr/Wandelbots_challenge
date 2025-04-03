@@ -1,7 +1,9 @@
-/*Write a C++ function that prints the numbers from 1 to 100.
+/*
+Write a C++ function that prints the numbers from 1 to 100.
 But for multiples of three, print "Fizz" instead of the number and for the multiples of five, print "Buzz".
 For numbers which are multiples of both three and five, print "FizzBuzz".
-Additionally, if the number is a prime number, print "Prime" instead.*/
+Additionally, if the number is a prime number, print "Prime" instead.
+*/
 
 #include <iostream>
 
@@ -11,8 +13,15 @@ bool is_prime(const int &number)
     {
         return false;
     }
-
-    for (int i = 2; i <= number / 2; ++i)
+    if (number == 2)
+    {
+        return true;
+    }
+    if (number % 2 == 0)
+    {
+        return false;
+    }
+    for (int i = 3; (i * i) <= number; i += 2)
     {
         if (number % i == 0)
         {
